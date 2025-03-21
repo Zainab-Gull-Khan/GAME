@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://boubpnxih54t0"]
+
+[ext_resource type="Script" uid="uid://cfndxxsiqlro2" path="res://scripts/game_over.gd" id="1_v3hpu"]
+[ext_resource type="Texture2D" uid="uid://bsihdvy74rvti" path="res://assests_g/bg.jpeg" id="2_7m3ot"]
+[ext_resource type="FontFile" uid="uid://6ha6kb0kovqo" path="res://assets/font.ttf" id="5_7m3ot"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_v3hpu")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(-1.00002, -1.90735e-06)
+scale = Vector2(1.49167, 1.06557)
+texture = ExtResource("2_7m3ot")
+centered = false
+
+[node name="GameOverLbl" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 65.0
+offset_right = 627.0
+offset_bottom = 183.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_7m3ot")
+theme_override_font_sizes/font_size = 85
+text = "Game Over!!"
+horizontal_alignment = 1
+
+[node name="ScoreLbl" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 213.0
+offset_right = 590.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_7m3ot")
+theme_override_font_sizes/font_size = 39
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="."]
+offset_left = 283.0
+offset_top = 313.0
+offset_right = 433.0
+offset_bottom = 361.0
+theme_override_colors/font_hover_pressed_color = Color(0.0686902, 0.306347, 0.358747, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_7m3ot")
+theme_override_font_sizes/font_size = 21
+text = "Play Again"
+
+[connection signal="pressed" from="PlayAgainBtn" to="." method="_on_play_again_btn_pressed"]
