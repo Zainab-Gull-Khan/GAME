@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvwbuthl6c30i"]
+
+[ext_resource type="Script" uid="uid://ptfi2sef7y0t" path="res://scripts/vine_pair.gd" id="1_m2bs7"]
+[ext_resource type="Texture2D" uid="uid://b4br5ohsk671g" path="res://assests_g/vines (1).png" id="2_m2bs7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m2bs7"]
+radius = 48.5585
+height = 1892.3
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3hex"]
+radius = 51.6253
+height = 2390.37
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_000v6"]
+size = Vector2(7, 659)
+
+[node name="vinesPair" type="Node2D"]
+script = ExtResource("1_m2bs7")
+
+[node name="Lower" type="Sprite2D" parent="."]
+position = Vector2(2, 138)
+scale = Vector2(0.514843, 0.635204)
+texture = ExtResource("2_m2bs7")
+offset = Vector2(1, 144)
+
+[node name="LowerArea2D" type="Area2D" parent="Lower"]
+position = Vector2(-1.94234, -14.1687)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lower/LowerArea2D"]
+position = Vector2(0, 865.863)
+shape = SubResource("CapsuleShape2D_m2bs7")
+
+[node name="Upper" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, -130)
+rotation = -3.14159
+scale = Vector2(0.54237, 0.522932)
+texture = ExtResource("2_m2bs7")
+offset = Vector2(1, 144)
+
+[node name="UpperArea2D" type="Area2D" parent="Upper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper/UpperArea2D"]
+position = Vector2(-3.68482, 1103.39)
+shape = SubResource("CapsuleShape2D_e3hex")
+
+[node name="GapArea2D" type="Area2D" parent="."]
+position = Vector2(7, -65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GapArea2D"]
+position = Vector2(66, 2)
+shape = SubResource("RectangleShape2D_000v6")
