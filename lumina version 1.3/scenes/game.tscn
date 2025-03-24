@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://pom2vykvdr6l"]
+
+[ext_resource type="Script" uid="uid://cs3bexcwpu1yl" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://b0ql2ev8rwexh" path="res://assests_g/Dark Fantasy Forest.jpg" id="2_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://d3upvu7g1mvf" path="res://assests_g/firefly2.png" id="3_p57ef"]
+[ext_resource type="Script" uid="uid://tk8b8s4gyusf" path="res://scripts/firefly.gd" id="4_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://draqjrqsjejf5" path="res://assests_g/light.png" id="5_kvpfn"]
+[ext_resource type="FontFile" uid="uid://sta3swfjq7fo" path="res://fonts/mighty-souly-font/MightySouly-lxggD.ttf" id="5_vtaks"]
+[ext_resource type="AudioStream" uid="uid://guq0pl4ht3s3" path="res://assests_g/explosion.wav" id="7_vtaks"]
+[ext_resource type="AudioStream" uid="uid://d4flwylos7mri" path="res://assests_g/score.wav" id="8_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://td2881byip6x" path="res://assests_g/cartoon-jump-6462.mp3" id="9_vtaks"]
+[ext_resource type="AudioStream" uid="uid://dkkivu118lai6" path="res://assests_g/game-countdown-62-199828.mp3" id="10_vtaks"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p57ef"]
+radius = 83.4926
+height = 230.959
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(10204.9, 108.461)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_uwrxv")
+
+[node name="Bg" type="Sprite2D" parent="."]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+position = Vector2(0, -1)
+scale = Vector2(2.07473, 1.15238)
+texture = ExtResource("2_0tnpc")
+centered = false
+
+[node name="firefly" type="Sprite2D" parent="."]
+position = Vector2(338, 196)
+scale = Vector2(0.214844, 0.152344)
+texture = ExtResource("3_p57ef")
+flip_h = true
+script = ExtResource("4_0tnpc")
+
+[node name="flyArea2D" type="Area2D" parent="firefly"]
+position = Vector2(-349.091, -183.795)
+scale = Vector2(1.38889, 1.38889)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="firefly/flyArea2D"]
+position = Vector2(252.388, 134.234)
+rotation = -1.08892
+scale = Vector2(0.751459, -0.820994)
+shape = SubResource("CapsuleShape2D_p57ef")
+
+[node name="floorarea2d" type="Area2D" parent="firefly"]
+position = Vector2(-9.30908, 6.56409)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="firefly/floorarea2d"]
+position = Vector2(2885.81, 1398.15)
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="PointLight2D" type="PointLight2D" parent="firefly"]
+energy = 0.8
+texture = ExtResource("5_kvpfn")
+texture_scale = 2.8
+height = 998.0
+
+[node name="LightTimer" type="Timer" parent="firefly"]
+wait_time = 3.0
+one_shot = true
+
+[node name="vineTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="GameOverTimer" type="Timer" parent="."]
+
+[node name="ScoreLbl" type="Label" parent="."]
+texture_filter = 1
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 125.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.420071, 0.479048, 0.289922, 1)
+theme_override_fonts/font = ExtResource("5_vtaks")
+theme_override_font_sizes/font_size = 27
+text = "score: 0"
+horizontal_alignment = 1
+
+[node name="ChallengeTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_vtaks")
+volume_db = 1.874
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_kvpfn")
+volume_db = -8.432
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_vtaks")
+volume_db = -7.495
+
+[node name="GameBeginAudio" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_vtaks")
+volume_db = -5.943
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.277049, 0.233978, 0.174564, 1)
+
+[connection signal="area_shape_entered" from="firefly/flyArea2D" to="firefly" method="_on_fly_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="firefly/flyArea2D" to="firefly" method="_on_fly_area_2d_area_shape_exited"]
+[connection signal="timeout" from="firefly/LightTimer" to="firefly" method="_on_light_timer_timeout"]
+[connection signal="timeout" from="vineTimer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="ChallengeTimer" to="." method="_on_challenge_timer_timeout"]
