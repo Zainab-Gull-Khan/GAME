@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c760id5sevvrq"]
+
+[ext_resource type="Texture2D" uid="uid://bysju7jn0d26o" path="res://assests_g/flower2.png" id="1_ig136"]
+[ext_resource type="Script" uid="uid://ch43qejg7fnfl" path="res://power_up.gd" id="2_6iuya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uk6or"]
+radius = 249.867
+
+[node name="Node2D" type="Node2D"]
+
+[node name="flower_power_up" type="Sprite2D" parent="."]
+position = Vector2(381, 174)
+scale = Vector2(0.0742188, 0.0665323)
+texture = ExtResource("1_ig136")
+script = ExtResource("2_6iuya")
+
+[node name="power_up2D" type="Area2D" parent="flower_power_up"]
+position = Vector2(458.105, 240.485)
+
+[node name="power_up_CollisionShape2D" type="CollisionShape2D" parent="flower_power_up/power_up2D"]
+position = Vector2(-458.105, -255.515)
+shape = SubResource("CircleShape2D_uk6or")
