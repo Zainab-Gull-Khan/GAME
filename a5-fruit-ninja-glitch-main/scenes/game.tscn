@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0beojunsmwuk"]
+
+[ext_resource type="Script" uid="uid://d0p1heote6na1" path="res://scripts/game.gd" id="1_2k4m3"]
+[ext_resource type="Texture2D" uid="uid://bp255bg7jq87f" path="res://assets/images/background.png" id="3_4k4m3"]
+[ext_resource type="Script" uid="uid://bxx6qn687ogcj" path="res://scripts/slash_trail.gd" id="3_lnu2h"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_2k4m3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(266, 358)
+scale = Vector2(0.895492, 0.895492)
+texture = ExtResource("3_4k4m3")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+
+[node name="SlashTrail" type="Node2D" parent="."]
+script = ExtResource("3_lnu2h")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
