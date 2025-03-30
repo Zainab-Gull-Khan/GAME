@@ -1,0 +1,15 @@
+CODE FOR COMBO PART (io haven't implemented it but i was asking gpt and it gave me it has a bonus point so i am adding it here)
+var combo_count = 0
+var last_slice_time = 0.0
+var combo_timer = 2.0  # Time within which combos are counted
+
+func _on_fruit_sliced():
+    var current_time = OS.get_ticks_msec() / 1000.0
+    if current_time - last_slice_time < combo_timer:
+        combo_count += 1
+        score += 10 * combo_count  # Bonus for combos
+    else:
+        combo_count = 1  # Reset combo
+        score += 10
+    last_slice_time = current_time
+    $ScoreLabel.text = "Score: %d" % score
