@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjqhh01u6levo"]
+
+[ext_resource type="Texture2D" uid="uid://bp255bg7jq87f" path="res://assets/images/background.png" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://wet08aqx6ogn" path="res://scenes/level.gd" id="1_mx8sn"]
+[ext_resource type="FontFile" uid="uid://crcu1hilcl6f6" path="res://assets/fonts/Comica BD.ttf" id="3_ppgk2"]
+[ext_resource type="FontFile" uid="uid://dyleauqdwexv7" path="res://assets/fonts/Comica BD Bold.ttf" id="4_2r41h"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_mx8sn")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(271, 442)
+scale = Vector2(0.894262, 1.08333)
+texture = ExtResource("1_2q6dc")
+
+[node name="Label_choice" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 317.0
+offset_right = 351.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0.273415, 0.432091, 0.195061, 1)
+theme_override_colors/font_shadow_color = Color(0.27451, 0.431373, 0.196078, 1)
+theme_override_fonts/font = ExtResource("3_ppgk2")
+theme_override_font_sizes/font_size = 54
+text = "Select Level"
+
+[node name="Level1" type="Button" parent="."]
+offset_left = 119.0
+offset_top = 448.0
+offset_right = 299.0
+offset_bottom = 502.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.501783, 0.52233, 1)
+theme_override_colors/font_hover_color = Color(0, 0.501961, 0.521569, 1)
+theme_override_colors/font_color = Color(0.609842, 0.041461, 0.176101, 1)
+theme_override_fonts/font = ExtResource("4_2r41h")
+theme_override_font_sizes/font_size = 44
+text = "LEVEL 1"
+flat = true
+
+[node name="Fruit_Label" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 142.0
+offset_right = 254.0
+offset_bottom = 237.0
+rotation = -0.166084
+theme_override_colors/font_color = Color(0.827451, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.65535, 0.601841, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("3_ppgk2")
+theme_override_font_sizes/font_size = 80
+text = "Fruit "
+
+[node name="Ninja_Label" type="Label" parent="."]
+offset_left = 164.0
+offset_top = 187.0
+offset_right = 334.0
+offset_bottom = 272.0
+rotation = -0.154074
+theme_override_colors/font_color = Color(0.819608, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.229536, 0.174185, 1)
+theme_override_colors/font_outline_color = Color(0.811765, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ppgk2")
+theme_override_font_sizes/font_size = 80
+text = "Ninja"
+
+[node name="level2" type="Button" parent="."]
+offset_left = 121.0
+offset_top = 539.0
+offset_right = 308.0
+offset_bottom = 593.0
+theme_override_colors/font_hover_pressed_color = Color(0.542729, 0.318806, 0.349631, 1)
+theme_override_colors/font_hover_color = Color(0.541176, 0.317647, 0.34902, 1)
+theme_override_colors/font_color = Color(0.403738, 0.0491164, 0.0956871, 1)
+theme_override_fonts/font = ExtResource("4_2r41h")
+theme_override_font_sizes/font_size = 44
+text = "LEVEL 2"
+flat = true
+
+[connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="level2" to="." method="_on_level_2_pressed"]

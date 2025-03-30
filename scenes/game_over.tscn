@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dd0bhdrujewh8"]
+
+[ext_resource type="Script" uid="uid://25kjm7dd8cdn" path="res://scenes/game_over.gd" id="1_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://bp255bg7jq87f" path="res://assets/images/background.png" id="1_wqhvx"]
+[ext_resource type="FontFile" uid="uid://crcu1hilcl6f6" path="res://assets/fonts/Comica BD.ttf" id="2_tbwuq"]
+[ext_resource type="AudioStream" uid="uid://b2a3vbdxvy0hp" path="res://assets/sounds/gameover.mp3" id="4_racf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbwuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3hpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_racf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_irg28"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jtsn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7m3ot"]
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tbwuq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(304, 405)
+texture = ExtResource("1_wqhvx")
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 163.0
+offset_right = 374.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0.907933, 0.293016, 0, 0.509804)
+theme_override_colors/font_shadow_color = Color(0.274462, 0.536433, 0.399186, 1)
+theme_override_colors/font_outline_color = Color(0.239568, 0.311584, 0.622149, 1)
+theme_override_fonts/font = ExtResource("2_tbwuq")
+theme_override_font_sizes/font_size = 75
+text = "Game Over"
+
+[node name="PlayAgainButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 366.0
+offset_right = 348.0
+offset_bottom = 433.0
+theme_override_colors/font_hover_color = Color(0.835294, 0.368627, 0.113725, 1)
+theme_override_colors/font_color = Color(0.137255, 0.490196, 0.290196, 0.862745)
+theme_override_fonts/font = ExtResource("2_tbwuq")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tbwuq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v3hpu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_racf3")
+text = "Play Again"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 478.0
+offset_right = 281.0
+offset_bottom = 545.0
+theme_override_colors/font_hover_color = Color(0.443171, 0.281652, 0.591595, 1)
+theme_override_colors/font_color = Color(0, 0.717647, 0.85098, 1)
+theme_override_fonts/font = ExtResource("2_tbwuq")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover = SubResource("StyleBoxEmpty_irg28")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2jtsn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7m3ot")
+text = "Quit"
+
+[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_racf3")
+autoplay = true
+
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://hmv56jwa8vqo"]
+
+[ext_resource type="Script" uid="uid://cgsthldq7xwgh" path="res://scenes/game_1.gd" id="1_pncae"]
+[ext_resource type="Texture2D" uid="uid://bp255bg7jq87f" path="res://assets/images/background.png" id="2_ygnno"]
+[ext_resource type="FontFile" uid="uid://crcu1hilcl6f6" path="res://assets/fonts/Comica BD.ttf" id="3_8rbwk"]
+[ext_resource type="Script" uid="uid://bxx6qn687ogcj" path="res://scripts/slash_trail.gd" id="4_lyscb"]
+[ext_resource type="AudioStream" uid="uid://c2400p7amm3pb" path="res://assets/sounds/scaleCountDown.wav" id="5_luixn"]
+
+[node name="level2" type="Node2D"]
+script = ExtResource("1_pncae")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(295, 398)
+texture = ExtResource("2_ygnno")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 48.0
+offset_right = 219.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.835294, 0.392157, 0.501961, 0.929412)
+theme_override_colors/font_shadow_color = Color(0, 0.490196, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.929412, 0.945098, 0.819608)
+theme_override_fonts/font = ExtResource("3_8rbwk")
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+
+[node name="SlashTrail" type="Node2D" parent="."]
+script = ExtResource("4_lyscb")
+
+[node name="countdown_Label" type="Label" parent="."]
+offset_left = 287.0
+offset_top = 47.0
+offset_right = 349.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.83379, 0.393487, 0.502745, 0.929412)
+theme_override_colors/font_shadow_color = Color(0, 0.490196, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.929412, 0.945098, 0.819608)
+theme_override_fonts/font = ExtResource("3_8rbwk")
+theme_override_font_sizes/font_size = 40
+text = "90"
+
+[node name="countdown_Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="TickingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_luixn")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="countdown_Timer" to="." method="_on_countdown_timer_timeout"]

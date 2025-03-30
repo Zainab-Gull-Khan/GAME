@@ -1,0 +1,7 @@
+creating levels 
+game and fruit =level 1
+level 1 = mutltiple spawns increase in velocity after 20 seconds (medium level)
+game_11 and fruit_1= level 2 
+level 2= more fruits and more spawning 
+
+>> will keep writing whatever i add in these levels

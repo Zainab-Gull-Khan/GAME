@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw77rot3vur43"]
+
+[ext_resource type="FontFile" uid="uid://crcu1hilcl6f6" path="res://assets/fonts/Comica BD.ttf" id="1_evrdy"]
+[ext_resource type="Script" uid="uid://c2v46lig08tnr" path="res://scripts/ready_screen.gd" id="1_owwbu"]
+[ext_resource type="Texture2D" uid="uid://bp255bg7jq87f" path="res://assets/images/background.png" id="2_ikrp5"]
+[ext_resource type="AudioStream" uid="uid://cy3yqs5m6160s" path="res://assets/sounds/CountDown.wav" id="2_owwbu"]
+[ext_resource type="AudioStream" uid="uid://d0v1emowu1i1o" path="res://assets/sounds/bomb-fuse.wav" id="5_mnkpi"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_owwbu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(203, 356.25)
+scale = Vector2(0.659016, 0.877614)
+texture = ExtResource("2_ikrp5")
+
+[node name="game_start_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 195.0
+offset_right = 380.0
+offset_bottom = 254.0
+theme_override_colors/font_color = Color(0.185498, 0.41621, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.442713, 0.216229, 0.419151, 1)
+theme_override_colors/font_outline_color = Color(0.392074, 0.789976, 0.53276, 1)
+theme_override_fonts/font = ExtResource("1_evrdy")
+theme_override_font_sizes/font_size = 55
+text = "Game starts in"
+
+[node name="CountDownLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 349.0
+offset_right = 232.0
+offset_bottom = 428.0
+theme_override_colors/font_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.855837, 0.447637, 0.186703, 1)
+theme_override_colors/font_outline_color = Color(0.442764, 0.480215, 0.31016, 1)
+theme_override_fonts/font = ExtResource("1_evrdy")
+theme_override_font_sizes/font_size = 75
+text = "3"
+
+[node name="CountDownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CountdownSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_owwbu")
+
+[node name="GameStartSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mnkpi")
+
+[connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]

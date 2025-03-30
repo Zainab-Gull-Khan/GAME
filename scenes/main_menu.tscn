@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwf7j7l56gqd0"]
+
+[ext_resource type="Script" uid="uid://cl3iufj8plrxi" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://bp255bg7jq87f" path="res://assets/images/background.png" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://crcu1hilcl6f6" path="res://assets/fonts/Comica BD.ttf" id="1_l6cm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu84c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtw2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa1go"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bqqt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(200.25, 354.625)
+scale = Vector2(0.671311, 0.884071)
+texture = ExtResource("1_ekxnf")
+
+[node name="Fruit_Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 146.0
+offset_right = 257.0
+offset_bottom = 241.0
+rotation = -0.166084
+theme_override_colors/font_color = Color(0.827451, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.65535, 0.601841, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 80
+text = "Fruit "
+
+[node name="Ninja_Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 204.0
+offset_right = 341.0
+offset_bottom = 289.0
+rotation = -0.154074
+theme_override_colors/font_color = Color(0.819608, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.229536, 0.174185, 1)
+theme_override_colors/font_outline_color = Color(0.811765, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 80
+text = "Ninja"
+
+[node name="Play_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 373.0
+offset_right = 265.0
+offset_bottom = 440.0
+theme_override_colors/font_hover_color = Color(0, 0, 0.847059, 1)
+theme_override_colors/font_color = Color(0.807843, 0.0941176, 0.423529, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wu84c")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ln24")
+text = "Play"
+
+[node name="Quit_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 504.0
+offset_right = 275.0
+offset_bottom = 571.0
+theme_override_colors/font_hover_color = Color(1.15514e-06, 0.473886, 0.398011, 1)
+theme_override_colors/font_color = Color(0.682353, 0.0784314, 0.662745, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oa1go")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tbmy8")
+text = "Quit"
+
+[connection signal="pressed" from="Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]
